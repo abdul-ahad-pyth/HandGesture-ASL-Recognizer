@@ -32,4 +32,4 @@ To get the best accuracy, please follow these specific hand orientations:
 2. `python MAIN_APP.py`
 
 ---
-Developed by [Your Name]
+Developed by [abdul-ahad-pyth]
