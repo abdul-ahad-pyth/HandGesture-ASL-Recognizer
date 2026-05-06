@@ -1,39 +1,35 @@
 # ASL Alphabet Recognizer using MediaPipe
 
-This is a real-time American Sign Language (ASL) alphabet recognition system built with Python, OpenCV, and MediaPipe. The project uses hand landmark detection to identify 26 letters of the alphabet based on finger states and distance-based logic.
+This is a real-time American Sign Language (ASL) alphabet recognition system built with Python, OpenCV, and MediaPipe.
 
 ## 🚀 Features
-- **Real-time Detection:** High-speed hand tracking using MediaPipe.
-- **Full A-Z Support:** Logic included for all 26 English alphabets.
-- **Dual Modes:** 
-  - `Recognize Mode`: Detects signs in real-time.
-  - `Learn Mode`: Practice specific letters.
-- **Visual Feedback:** Dynamic color changes and FPS counter on the screen.
+- **Real-time Detection:** 26 letters of the ASL alphabet.
+- **Dual Modes:** Press `r` for Recognition and `l` for Learning mode.
+- **Hand Landmark Tracking:** High precision tracking using MediaPipe.
+
+## 🖐️ How to Perform Signs (User Guide)
+To get the best accuracy, please follow these specific hand orientations:
+
+| Category | Letters | Hand Position |
+| :--- | :--- | :--- |
+| **Fist** | A, S, T, N, M | Full fist. Pay attention to Thumb placement. |
+| **Flat** | B | Palm open, fingers together, thumb tucked. |
+| **Circle** | O, C, F | Fingers curved or touching thumb (F is the OK sign). |
+| **Point** | D, I, L, Y, Z | Specific fingers extended (e.g., L shape for 'L'). |
+| **V-Shape** | V, W, R | Two or three fingers up. For 'R', cross Index and Middle. |
+| **Directional**| G, H, P, Q | **G/H:** Point sideways. **P/Q:** Point downwards. |
 
 ## 🛠️ Tech Stack
-- **Python**
-- **OpenCV** (Computer Vision)
-- **MediaPipe** (Hand Tracking)
-
-## 📂 Project Structure
-- `MAIN_APP.py`: The entry point of the application.
-- `ASL_FUNCTION.py`: Contains the logic for finger states and sign recognition.
-- `l.py`: MediaPipe initialization and helper configurations.
-
-## ⚠️ Known Issues & Accuracy
-> **Note:** This project is a prototype based on static geometric logic.
-- **Lighting Sensitivity:** Accuracy may drop in low-light environments.
-- **Hand Orientation:** Works best when the hand is directly facing the camera.
-- **Static J & Z:** Since J and Z are motion-based, they are currently mapped to their final static positions.
-- **Flickering:** Due to raw landmark data, some letters might flicker between similar shapes (e.g., M, N, T).
+- Python, OpenCV, MediaPipe
 
 ## 🔮 Future Improvements
-- [ ] Implement a **Temporal Buffer** (Majority Voting) to stop flickering.
-- [ ] Train a **Deep Learning Model (CNN/LSTM)** for higher accuracy.
-- [ ] Add **Motion Tracking** for dynamic letters (J and Z).
-- [ ] Support for Left-Handed users.
+- Add a **Majority Voting Buffer** to reduce flickering.
+- Integrate **Deep Learning (CNN)** for 99% accuracy.
+- Motion tracking for dynamic letters like **J** and **Z**.
 
 ## 🏁 How to Run
-1. Install dependencies:
-   ```bash
-   pip install opencv-python mediapipe
+1. `pip install opencv-python mediapipe`
+2. `python MAIN_APP.py`
+
+---
+Developed by [Your Name]
