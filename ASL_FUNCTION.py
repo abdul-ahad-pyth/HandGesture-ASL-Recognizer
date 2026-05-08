@@ -1,22 +1,19 @@
-
-
 def get_hand_state(hand_landmarks):
     landmarks = hand_landmarks.landmark
     
-    tips=[4,8,12,16,20]
-    pips=[3,6,10,14,18]
-    fingers=[]
-    thumb_up=(landmarks[4].x<landmarks[3].x) if (landmarks[0].x<landmarks[9].x) else(landmarks[4].x>landmarks[3].x)
-    fingers.append(thumb_up)
-    for tip,pip in zip (tips[1:],pips[1:]):
-        fingers.append(landmarks[tip].y<landmarks[pip].y)
-    return fingers
-def recognize_asl(fingers,landmarks):
-    t,i,m,r,p=fingers
-    lm=landmarks.landmark
-    up_fingers=sum(fingers)
+    tips = [4, 8, 12, 16, 20]
+    pips = [3, 6, 10, 14, 18]
+    fingers = []
     
-    def recognize_asl(fingers, landmarks):
+    thumb_up = (landmarks[4].x < landmarks[3].x) if (landmarks[0].x < landmarks[9].x) else (landmarks[4].x > landmarks[3].x)
+    fingers.append(thumb_up)
+    
+    for tip, pip in zip(tips[1:], pips[1:]):
+        fingers.append(landmarks[tip].y < landmarks[pip].y)
+        
+    return fingers
+
+def recognize_asl(fingers, landmarks):
     t, i, m, r, p = fingers
     lm = landmarks.landmark
     up_fingers = sum(fingers)
@@ -49,9 +46,8 @@ def recognize_asl(fingers,landmarks):
 
     # --- Specific Logic for Complex Signs ---
     
-    # C (Curved - checking if hand is somewhat 'closed' but fingers are 'up')
+    # C (Curved)
     elif i and m and r and p and t:
-        # If thumb is far from index, it's an open B, otherwise C
         if abs(lm[4].x - lm[8].x) > 0.1: 
             return "C"
             
@@ -64,7 +60,6 @@ def recognize_asl(fingers,landmarks):
 
     # G / H (Orientation based)
     elif i and m and not any([r, p]) and not t:
-        # If middle finger is also out, it's H, otherwise G
         return "H" if m else "G"
 
     # W (Index, Middle, Ring)

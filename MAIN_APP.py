@@ -2,6 +2,7 @@ import mediapipe as mp
 import cv2
 import numpy as np
 import time
+import datetime
 from ASL_LEARNER import hands
 from ASL_LEARNER import mp_hands
 from ASL_LEARNER import mp_drawing
@@ -49,7 +50,13 @@ while cap.isOpened():
     elif key == ord('l'):
           mode = "learn"
     elif key == ord('r'):
-          mode = "recognize"
+          mode = "recognize" 
+    elif key==ord('s'):
+         import datetime
+    # Time ke sath unique filename banayega
+         filename = f"screenshot_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
+         cv2.imwrite(filename, frame)
+         print(f"Screenshot saved as {filename}")    
 cap.release()
 cv2.destroyAllWindows()
 
